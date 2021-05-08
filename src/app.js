@@ -1,18 +1,17 @@
 import $ from 'jquery';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
-
 import { debounce } from 'min-dash';
 
 import propertiesPanelModule from 'bpmn-js-properties-panel';
 import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda';
 import camundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda.json';
 import color from 'bpmn-js-in-color';
-
 import diagramXML from '../resources/newDiagram.bpmn';
 
+import magicModdleDescriptor from '../app/descriptors/magic.json';
+import magicPropertiesProviderModule from '../app/provider/magic';
 
 var container = $('#js-drop-zone');
-
 var canvas = $('#js-canvas');
 
 var bpmnModeler = new BpmnModeler({
@@ -23,10 +22,12 @@ var bpmnModeler = new BpmnModeler({
   additionalModules: [
     color,
     propertiesPanelModule,
-    propertiesProviderModule
+    propertiesProviderModule,
+    magicPropertiesProviderModule
   ],
   moddleExtensions: {
-    camunda: camundaModdleDescriptor
+    camunda: camundaModdleDescriptor,
+    magic: magicModdleDescriptor
   }
 });
 container.removeClass('with-diagram');
