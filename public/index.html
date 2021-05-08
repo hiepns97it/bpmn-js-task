@@ -56,15 +56,25 @@
       </a>
     </li>
     <li>
-      <input type="file" accept="text/bpmn" name="txt_localFile" id="txt_localFile"  />
+      <input type="file" accept="text/bpmn" name="txt_localFile" id="txt_localFile" onchange="readText(event)" />
     </li>
     <li>
-      <a id="bpmnFileName" href title="download as SVG image">
-        SVG image
+      <a id="bpmnFileName" href title="Load file local bpmn js">
+        Load File
       </a>
+    </li>
+    <li>
+      <input hidden id="output" value=""></input>
     </li>
   </ul>
 
   <script src="app.js"></script>
+  <script>
+    async function readText(event) {
+      const file = event.target.files.item(0)
+      const text = await file.text();
+      document.getElementById("output").value = text
+    }
+  </script>
 
 </html>
