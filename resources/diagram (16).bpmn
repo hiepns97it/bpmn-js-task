@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:collaboration id="QuyTrinh1" department="true">
+    <bpmn2:participant id="Participant_1ffhap2" processRef="Process_1g32qc9" />
+  </bpmn2:collaboration>
+  <bpmn2:process id="Process_1g32qc9">
+    <bpmn2:startEvent id="Event_0gpbnda">
+      <bpmn2:outgoing>Flow_1e9s0vb</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="Flow_1e9s0vb" sourceRef="Event_0gpbnda" targetRef="Activity_1i2zyfp" />
+    <bpmn2:task id="Activity_1i2zyfp" name="hi">
+      <bpmn2:incoming>Flow_1e9s0vb</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_0l4odlf</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="Flow_0l4odlf" sourceRef="Activity_1i2zyfp" targetRef="Gateway_0xslkyq">
+      <bpmn2:extensionElements>
+        <camunda:properties>
+          <camunda:property name="bvds" />
+        </camunda:properties>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_11my0u0" sourceRef="Gateway_0xslkyq" targetRef="Activity_10ynuxe" />
+    <bpmn2:exclusiveGateway id="Gateway_0xslkyq">
+      <bpmn2:incoming>Flow_0l4odlf</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_11my0u0</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:task id="Activity_10ynuxe" department="true">
+      <bpmn2:incoming>Flow_11my0u0</bpmn2:incoming>
+    </bpmn2:task>
+    <bpmn2:dataStoreReference id="DataStoreReference_1w8zayr" />
+    <bpmn2:task id="Activity_16rpycb">
+      <bpmn2:outgoing>Flow_0hcej6n</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="Flow_0hcej6n" sourceRef="Activity_16rpycb" targetRef="Event_055f4tl" />
+    <bpmn2:endEvent id="Event_055f4tl">
+      <bpmn2:incoming>Flow_0hcej6n</bpmn2:incoming>
+      <bpmn2:signalEventDefinition id="SignalEventDefinition_1o3cjvq" />
+    </bpmn2:endEvent>
+    <bpmn2:textAnnotation id="TextAnnotation_0txb43w">
+      <bpmn2:text>bac</bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:association id="Association_097xmbi" sourceRef="Activity_1i2zyfp" targetRef="TextAnnotation_0txb43w" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="QuyTrinh1">
+      <bpmndi:BPMNShape id="Participant_1ffhap2_di" bpmnElement="Participant_1ffhap2" isHorizontal="true">
+        <dc:Bounds x="220" y="40" width="990" height="320" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0hcej6n_di" bpmnElement="Flow_0hcej6n">
+        <di:waypoint x="460" y="170" />
+        <di:waypoint x="512" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11my0u0_di" bpmnElement="Flow_11my0u0">
+        <di:waypoint x="770" y="155" />
+        <di:waypoint x="770" y="213" />
+        <di:waypoint x="890" y="213" />
+        <di:waypoint x="890" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l4odlf_di" bpmnElement="Flow_0l4odlf">
+        <di:waypoint x="610" y="220" />
+        <di:waypoint x="770" y="220" />
+        <di:waypoint x="770" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e9s0vb_di" bpmnElement="Flow_1e9s0vb">
+        <di:waypoint x="338" y="220" />
+        <di:waypoint x="510" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0gpbnda_di" bpmnElement="Event_0gpbnda">
+        <dc:Bounds x="302" y="202" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="Activity_1i2zyfp_di" bpmnElement="Activity_1i2zyfp" color:background-color="#ff7f00">
+        <dc:Bounds x="510" y="180" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0xslkyq_di" bpmnElement="Gateway_0xslkyq" isMarkerVisible="true">
+        <dc:Bounds x="745" y="105" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10ynuxe_di" bpmnElement="Activity_10ynuxe">
+        <dc:Bounds x="840" y="240" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0hp373i_di" bpmnElement="DataStoreReference_1w8zayr">
+        <dc:Bounds x="355" y="255" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_16rpycb_di" bpmnElement="Activity_16rpycb">
+        <dc:Bounds x="360" y="130" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_13rml2n_di" bpmnElement="Event_055f4tl">
+        <dc:Bounds x="512" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="TextAnnotation_0txb43w_di" bpmnElement="TextAnnotation_0txb43w" color:background-color="#0000ff">
+        <dc:Bounds x="610" y="100" width="100" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_097xmbi_di" bpmnElement="Association_097xmbi">
+        <di:waypoint x="598" y="180" />
+        <di:waypoint x="646" y="130" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
